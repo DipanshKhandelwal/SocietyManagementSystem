@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.EtPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnSignUp = (Button) findViewById(R.id.bSignUp);
-        btnLogin = (TextView) findViewById(R.id.bLogIn);
+        btnLogin = (TextView) findViewById(R.id.TvLogin);
         btnReset = (TextView) findViewById(R.id.TvReset);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
