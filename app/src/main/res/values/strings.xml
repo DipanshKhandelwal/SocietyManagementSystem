@@ -7,4 +7,14 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="error_password_length">Minimum length of password is 6</string>
     <string name="error_credentials">Either password or email is wrong!! Try Again !!</string>
+
+    <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="login_text">I\'m already a member</string>
+
+    <string name="email1">Enter email address!</string>
+    <string name="email2">Enter Name!</string>
+    <string name="pwd1">Enter password!</string>
+    <string name="plen">Password too short, enter minimum 6 characters!</string>
+
 </resources>
