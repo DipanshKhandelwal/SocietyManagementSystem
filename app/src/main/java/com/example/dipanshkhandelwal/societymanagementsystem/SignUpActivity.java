@@ -33,6 +33,21 @@ public class SignUpActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
-        
+
+        inputName = (EditText) findViewById(R.id.EtName);
+        inputEmail = (EditText) findViewById(R.id.EtEmail);
+        inputPassword = (EditText) findViewById(R.id.EtPassword);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        btnSignUp = (Button) findViewById(R.id.bSignUp);
+        btnLogin = (TextView) findViewById(R.id.bLogIn);
+        btnReset = (TextView) findViewById(R.id.TvReset);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this , LoginActivity.class));
+            }
+        });
+
     }
 }
