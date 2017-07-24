@@ -49,5 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this,"start activity to reset password", Toast.LENGTH_LONG).show();
             }
         });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });
+        
     }
 }
