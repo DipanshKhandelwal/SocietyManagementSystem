@@ -16,12 +16,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText inputEmail , inputPassword , inputName;
+    String userId;
     private Button btnSignUp ;
     private TextView btnLogin , btnReset;
     private ProgressBar progressBar;
@@ -107,6 +113,36 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             }
                         });
+
+            }
+        });
+    }
+
+    private void createUser(String name, String email) {
+        if (TextUtils.isEmpty(userId)) {
+            userId = auth.getCurrentUser().getUid();
+        }
+        User user = new User(name, email);
+        FirebaseUser userd = auth.getCurrentUser();
+        userd.updateProfile(new UserProfileChangeRequest.Builder()
+                .setDisplayName(name).build());
+        mFirebaseDatabase.child(userId).setValue(user);
+        addUserChangeListener();
+    }
+
+    private void addUserChangeListener() {
+        mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+
+                if (user == null){
+                    return;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
