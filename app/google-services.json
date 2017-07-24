@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "596770601010",
+    "firebase_url": "https://societymanagementsystem-67844.firebaseio.com",
+    "project_id": "societymanagementsystem-67844",
+    "storage_bucket": "societymanagementsystem-67844.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596770601010:android:a30cc3ad901a6bc9",
+        "android_client_info": {
+          "package_name": "com.example.dipanshkhandelwal.societymanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596770601010-bhj4f850jgrg81qt1t4l35m15ba73s8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dipanshkhandelwal.societymanagementsystem",
+            "certificate_hash": "0a22e73ac3261c53155059cd0f84dc8d7e859cca"
+          }
+        },
+        {
+          "client_id": "596770601010-tquaj41altfp6pnqeesc7sm35k8ls4vh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMd7F2wE0fB293ZoDpnwk_qNgD9ilKWg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596770601010-tquaj41altfp6pnqeesc7sm35k8ls4vh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
