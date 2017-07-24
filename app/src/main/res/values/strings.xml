@@ -17,4 +17,7 @@
     <string name="pwd1">Enter password!</string>
     <string name="plen">Password too short, enter minimum 6 characters!</string>
 
+    <string name="comp">createUserWithEmail:onComplete:</string>
+    <string name="auth1">Authentication failed.</string>
+
 </resources>
