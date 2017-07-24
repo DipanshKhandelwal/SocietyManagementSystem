@@ -55,6 +55,38 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this,"start activity to reset password", Toast.LENGTH_LONG).show();
             }
         });
-        
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String email = inputEmail.getText().toString().trim();
+                String password = inputPassword.getText().toString().trim();
+                final String name = inputName.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), R.string.email1, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(getApplicationContext(), R.string.email2, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), R.string.pwd1, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (password.length() < 6) {
+                    Toast.makeText(getApplicationContext(), R.string.plen, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+            }
+        });
     }
 }
