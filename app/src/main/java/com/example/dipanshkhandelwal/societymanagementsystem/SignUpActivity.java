@@ -107,7 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpActivity.this, getString(R.string.auth1) + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 }else {
-                                    createUser(email, email);
+                                    createUser(name, email);
                                     startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                                     finish();
                                 }
