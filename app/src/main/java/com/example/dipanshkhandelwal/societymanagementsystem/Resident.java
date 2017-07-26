@@ -7,4 +7,11 @@ import java.sql.Time;
  */
 
 public class Resident {
+    String name ;
+    String address ;
+    int phone_number ;
+    String car_number ;
+
+    int in_time;
+    int out_time;
 }
