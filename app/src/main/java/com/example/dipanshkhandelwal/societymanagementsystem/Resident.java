@@ -14,4 +14,28 @@ public class Resident {
 
     int in_time;
     int out_time;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getPhone_number() {
+        return phone_number;
+    }
+
+    public String getCar_number() {
+        return car_number;
+    }
+
+    public int getIn_time() {
+        return in_time;
+    }
+
+    public int getOut_time() {
+        return out_time;
+    }
 }
