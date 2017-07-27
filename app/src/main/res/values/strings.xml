@@ -19,5 +19,6 @@
 
     <string name="comp">createUserWithEmail:onComplete:</string>
     <string name="auth1">Authentication failed.</string>
+    <string name="title_activity_add_resident_form">AddResidentForm</string>
 
 </resources>
