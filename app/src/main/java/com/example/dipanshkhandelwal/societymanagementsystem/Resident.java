@@ -9,13 +9,13 @@ import java.sql.Time;
 public class Resident {
     String name ;
     String address ;
-    int phone_number ;
+    String phone_number ;
     String car_number ;
 
     int in_time;
     int out_time;
 
-    public Resident(String name, String address, int phone_number, String car_number, int in_time, int out_time) {
+    public Resident(String name, String address, String phone_number, String car_number, int in_time, int out_time) {
         this.name = name;
         this.address = address;
         this.phone_number = phone_number;
@@ -24,7 +24,7 @@ public class Resident {
         this.out_time = out_time;
     }
 
-    public Resident(String name, String address, int phone_number, String car_number) {
+    public Resident(String name, String address, String phone_number, String car_number) {
         this.name = name;
         this.address = address;
         this.phone_number = phone_number;
@@ -47,11 +47,11 @@ public class Resident {
         this.address = address;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
