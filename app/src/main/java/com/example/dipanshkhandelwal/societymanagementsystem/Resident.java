@@ -13,6 +13,23 @@ public class Resident {
     String car_number ;
 
     int in_time;
+    int out_time;
+
+    public Resident(String name, String address, int phone_number, String car_number, int in_time, int out_time) {
+        this.name = name;
+        this.address = address;
+        this.phone_number = phone_number;
+        this.car_number = car_number;
+        this.in_time = in_time;
+        this.out_time = out_time;
+    }
+
+    public Resident(String name, String address, int phone_number, String car_number) {
+        this.name = name;
+        this.address = address;
+        this.phone_number = phone_number;
+        this.car_number = car_number;
+    }
 
     public String getName() {
         return name;
@@ -61,6 +78,4 @@ public class Resident {
     public void setOut_time(int out_time) {
         this.out_time = out_time;
     }
-
-    int out_time;
 }
