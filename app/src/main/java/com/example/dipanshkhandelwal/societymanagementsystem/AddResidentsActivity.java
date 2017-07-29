@@ -14,6 +14,7 @@ public class AddResidentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_residents);
 
+        add = (FloatingActionButton) findViewById(R.id.add_resident);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
