@@ -7,7 +7,7 @@ package com.example.dipanshkhandelwal.societymanagementsystem;
 public class Visitor {
     String name;
     String destinaion_address;
-    int phone_number;
+    String phone_number;
     String purpose_to_visit;
     String address_of_visitor;
     String guard_on_duty;
@@ -31,11 +31,11 @@ public class Visitor {
         this.destinaion_address = destinaion_address;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
