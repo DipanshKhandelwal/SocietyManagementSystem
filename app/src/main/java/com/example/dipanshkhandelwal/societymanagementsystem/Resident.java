@@ -15,6 +15,9 @@ public class Resident {
     int in_time;
     int out_time;
 
+    public Resident() {
+    }
+
     public Resident(String name, String address, String phone_number, String car_number, int in_time, int out_time) {
         this.name = name;
         this.address = address;
