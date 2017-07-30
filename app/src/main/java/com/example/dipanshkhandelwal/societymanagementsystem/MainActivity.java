@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
 
+        auth = FirebaseAuth.getInstance();
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseDatabaseResidentList = mFirebaseInstance.getReference("residents");
+        mFirebaseDatabaseEntries = mFirebaseInstance.getReference("entries");
+
         add = (FloatingActionButton) findViewById(R.id.new_resident);
         Allow = (ImageButton) findViewById(R.id.bAllow);
         Reset = (ImageButton) findViewById(R.id.bReset);
@@ -80,6 +85,33 @@ public class MainActivity extends AppCompatActivity {
                 TvDuration.setText("");
             }
         });
+
+        mFirebaseDatabaseResidentList.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Residents.add(dataSnapshot.getValue(Resident.class));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        })
     }
 
     @Override
