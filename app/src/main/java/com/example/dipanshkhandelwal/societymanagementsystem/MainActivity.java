@@ -11,17 +11,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseAuth auth;
     FloatingActionButton add;
     ImageButton Allow, Reset, Info, OnCar, OnFoot;
     EditText name;
+    TextView TvName,TvAddress, TvPhone, TvCar, TvOut, TvIn, TvDuration;
+    private FirebaseAuth auth;
+    private DatabaseReference mFirebaseDatabaseResidentList;
+    private DatabaseReference mFirebaseDatabaseEntries;
+    private FirebaseDatabase mFirebaseInstance;
+    private List<Resident> Residents= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +49,35 @@ public class MainActivity extends AppCompatActivity {
         OnCar = (ImageButton) findViewById(R.id.bOnCar);
         OnFoot = (ImageButton) findViewById(R.id.bOnFoot);
 
+        TvName = (TextView) findViewById(R.id.TvName);
+        TvAddress = (TextView) findViewById(R.id.TvAddress);
+        TvPhone = (TextView) findViewById(R.id.TvPhone);
+        TvCar = (TextView) findViewById(R.id.TvCar);
+        TvOut = (TextView) findViewById(R.id.TvOut);
+        TvIn = (TextView) findViewById(R.id.TvIn);
+        TvDuration = (TextView) findViewById(R.id.TvDuration);
+
+        name = (EditText) findViewById(R.id.FootOrCar);
+
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AddResidentsActivity.class));
+            }
+        });
+
+        Reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name.setText("");
+                TvName.setText("");
+                TvAddress.setText("");
+                TvPhone.setText("");
+                TvCar.setText("");
+                TvOut.setText("");
+                TvIn.setText("");
+                TvDuration.setText("");
             }
         });
     }
@@ -62,4 +100,5 @@ public class MainActivity extends AppCompatActivity {
             default: return super.onOptionsItemSelected(item);
         }
     }
+
 }
