@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FloatingActionButton add;
+    ImageButton Allow, Reset, Info, OnCar, OnFoot;
+    EditText name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         add = (FloatingActionButton) findViewById(R.id.new_resident);
+        Allow = (ImageButton) findViewById(R.id.bAllow);
+        Reset = (ImageButton) findViewById(R.id.bReset);
+        Info = (ImageButton) findViewById(R.id.bInfo);
+        OnCar = (ImageButton) findViewById(R.id.bOnCar);
+        OnFoot = (ImageButton) findViewById(R.id.bOnFoot);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
