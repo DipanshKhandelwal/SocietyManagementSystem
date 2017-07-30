@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        })
+        });
     }
 
     @Override
@@ -144,4 +144,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private boolean checkForResident(String name){
+        for(Resident x:Residents){
+            if(name.equals(x.name)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
