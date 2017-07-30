@@ -86,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkForResident(name.getText().toString().trim())){
+                    updateResidentLayout();
+                }else{
+                    updateVisitorLayout();
+                }
+            }
+        });
+
         mFirebaseDatabaseResidentList.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
