@@ -80,8 +80,6 @@ public class AddResidentForm extends AppCompatActivity {
                 addResident(Sname, Saddress, Sphone, Scar );
             }
         });
-
-
     }
 
     private void addResident(String name, String address, String phone, String car) {
