@@ -109,4 +109,10 @@ public class AddResidentForm extends AppCompatActivity {
         super.onResume();
         progressBar.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(AddResidentForm.this, AddResidentsActivity.class));
+        super.onBackPressed();
+    }
 }
