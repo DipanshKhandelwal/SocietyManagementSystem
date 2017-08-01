@@ -91,7 +91,7 @@ public class AddGuardForm extends AppCompatActivity {
         mFirebaseDatabase.child(name).setValue(guard).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(AddGuardForm.this, "Resident Added successfully !!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddGuardForm.this, "Guard Added successfully !!", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 startActivity(new Intent(AddGuardForm.this, GuardInfo.class));
             }
@@ -108,5 +108,11 @@ public class AddGuardForm extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(AddGuardForm.this, GuardInfo.class));
+        super.onBackPressed();
     }
 }
