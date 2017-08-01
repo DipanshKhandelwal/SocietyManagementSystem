@@ -12,13 +12,13 @@ public class Resident {
     String phone_number ;
     String car_number ;
 
-    int in_time;
-    int out_time;
-
     public Resident() {
     }
 
-    public Resident(String name, String address, String phone_number, String car_number, int in_time, int out_time) {
+    String in_time;
+    String out_time;
+
+    public Resident(String name, String address, String phone_number, String car_number, String in_time, String out_time) {
         this.name = name;
         this.address = address;
         this.phone_number = phone_number;
@@ -66,19 +66,19 @@ public class Resident {
         this.car_number = car_number;
     }
 
-    public int getIn_time() {
+    public String getIn_time() {
         return in_time;
     }
 
-    public void setIn_time(int in_time) {
+    public void setIn_time(String in_time) {
         this.in_time = in_time;
     }
 
-    public int getOut_time() {
+    public String getOut_time() {
         return out_time;
     }
 
-    public void setOut_time(int out_time) {
+    public void setOut_time(String out_time) {
         this.out_time = out_time;
     }
 }
