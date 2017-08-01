@@ -17,6 +17,9 @@ public class Guard {
         this.address = address;
     }
 
+    public Guard() {
+    }
+
     public String getName() {
         return name;
     }
