@@ -10,6 +10,13 @@ public class Guard {
     String phone_number;
     String address;
 
+    public Guard(String name, String wroking_hours, String phone_number, String address) {
+        this.name = name;
+        this.wroking_hours = wroking_hours;
+        this.phone_number = phone_number;
+        this.address = address;
+    }
+
     public String getName() {
         return name;
     }
