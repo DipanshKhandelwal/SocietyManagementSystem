@@ -19,7 +19,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AddResidentsActivity" />
-        <activity android:name=".AddResidentForm"></activity>
+        <activity android:name=".AddResidentForm" />
+        <activity android:name=".GuardInfo"></activity>
     </application>
 
 </manifest>
