@@ -21,7 +21,8 @@
         <activity android:name=".AddResidentsActivity" />
         <activity android:name=".AddResidentForm" />
         <activity android:name=".GuardInfo" />
-        <activity android:name=".AddGuardForm"></activity>
+        <activity android:name=".AddGuardForm" />
+        <activity android:name=".ServiceVisitorInfo"></activity>
     </application>
 
 </manifest>
