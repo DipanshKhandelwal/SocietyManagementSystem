@@ -24,7 +24,7 @@
         android:id="@+id/ResidentLayout"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/bInfo"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp">
 
@@ -129,6 +129,7 @@
                 />
 
             <TextView
+                android:id="@+id/TvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="4dp"
@@ -140,17 +141,18 @@
                 />
 
             <TextView
-                android:layout_margin="4dp"
+                android:id="@+id/TvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="Phone No."
                 android:textAlignment="center"
-                android:textSize="16dp"
-                />
+                android:textSize="16dp" />
 
             <TextView
+                android:id="@+id/TvCar"
                 android:layout_margin="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -162,6 +164,7 @@
                 />
 
             <TextView
+                android:id="@+id/TvOut"
                 android:layout_margin="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -173,6 +176,7 @@
                 />
 
             <TextView
+                android:id="@+id/TvIn"
                 android:layout_margin="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -184,6 +188,7 @@
                 />
 
             <TextView
+                android:id="@+id/TvDuration"
                 android:layout_margin="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -298,7 +303,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -309,7 +313,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -320,7 +323,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -331,7 +333,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -342,7 +343,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -353,7 +353,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
@@ -364,7 +363,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
 
