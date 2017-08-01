@@ -75,7 +75,12 @@ public class AddResidentsActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(AddResidentsActivity.this, MainActivity.class));
+        super.onBackPressed();
     }
 }
 
