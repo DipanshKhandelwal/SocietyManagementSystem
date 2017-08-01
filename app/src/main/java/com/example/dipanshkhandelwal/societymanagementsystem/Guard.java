@@ -6,13 +6,13 @@ package com.example.dipanshkhandelwal.societymanagementsystem;
 
 public class Guard {
     String name;
-    String wroking_hours;
+    String working_hours;
     String phone_number;
     String address;
 
     public Guard(String name, String wroking_hours, String phone_number, String address) {
         this.name = name;
-        this.wroking_hours = wroking_hours;
+        this.working_hours = wroking_hours;
         this.phone_number = phone_number;
         this.address = address;
     }
@@ -25,12 +25,12 @@ public class Guard {
         this.name = name;
     }
 
-    public String getWroking_hours() {
-        return wroking_hours;
+    public String getWorking_hours() {
+        return working_hours;
     }
 
-    public void setWroking_hours(String wroking_hours) {
-        this.wroking_hours = wroking_hours;
+    public void setWorking_hours(String wroking_hours) {
+        this.working_hours = wroking_hours;
     }
 
     public String getPhone_number() {
