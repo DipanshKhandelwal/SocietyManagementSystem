@@ -77,4 +77,10 @@ public class GuardInfo extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(GuardInfo.this, MainActivity.class));
+        super.onBackPressed();
+    }
 }
