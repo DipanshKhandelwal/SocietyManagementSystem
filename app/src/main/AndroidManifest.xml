@@ -20,7 +20,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".AddResidentsActivity" />
         <activity android:name=".AddResidentForm" />
-        <activity android:name=".GuardInfo"></activity>
+        <activity android:name=".GuardInfo" />
+        <activity android:name=".AddGuardForm"></activity>
     </application>
 
 </manifest>
