@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -46,12 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference mFirebaseDatabaseResidentList;
     private DatabaseReference mFirebaseDatabaseEntries;
-    private DatabaseReference mFirebaseDatabaseEntriesResident;
-    private DatabaseReference mFirebaseDatabaseEntriesVisitor;
     private FirebaseDatabase mFirebaseInstance;
     private List<Resident> Residents= new ArrayList<>();
     private LinearLayout ResidentLayout, VisitorLayout;
     private Boolean Resident;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabaseResidentList = mFirebaseInstance.getReference("residents");
         mFirebaseDatabaseEntries = mFirebaseInstance.getReference("entries");
-        mFirebaseDatabaseEntriesResident = mFirebaseDatabaseEntries.child("residents");
-        mFirebaseDatabaseEntriesVisitor = mFirebaseDatabaseEntries.child("visitors");
 
         add = (FloatingActionButton) findViewById(R.id.new_resident);
         Allow = (ImageButton) findViewById(R.id.bAllow);
@@ -105,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 TvIn.setText("");
                 TvDuration.setText("");
                 name.setEnabled(true);
+                Allow.setEnabled(false);
             }
         });
 
@@ -140,20 +139,24 @@ public class MainActivity extends AppCompatActivity {
         Allow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Allow.setEnabled(false);
                 if(Resident){
-
-                    Resident resident = new Resident(TvName.getText().toString(), TvAddress.getText().toString(), TvPhone.getText().toString(),TvCar.getText().toString(), TvOut.getText().toString(), TvIn.getText().toString());
-                    mFirebaseDatabaseEntries.child(name.getText().toString()).setValue(resident).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(MainActivity.this, "Resident Added successfully !!", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, "There was an error adding !!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Resident resident = new Resident(TvName.getText().toString(), TvAddress.getText().toString(), TvPhone.getText().toString(),TvCar.getText().toString(), TvIn.getText().toString(), TvOut.getText().toString());
+                    if(!TvIn.getText().toString().equals("0")){
+                        mFirebaseDatabaseEntries.child(name.getText().toString()).child(key).child("in_time").setValue(TvIn.getText().toString());
+                    }else{
+                        mFirebaseDatabaseEntries.child(name.getText().toString()).push().setValue(resident).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MainActivity.this, "Resident Added successfully !!", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this, "There was an error adding !!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }else{
 
                 }
@@ -189,24 +192,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateResidentLayout(final Resident resident) {
-        Query query = mFirebaseDatabaseEntries.child("entries").child(resident.getName()).orderByKey().limitToLast(1);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        DatabaseReference data = mFirebaseDatabaseEntries.child(resident.getName());
+        data.orderByKey().limitToLast(1).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Resident resident2 = dataSnapshot.getValue(Resident.class);
 
-                if(resident2==null){
-                    Toast.makeText(MainActivity.this,"resident is null",Toast.LENGTH_SHORT).show();
-                    TvName.setText(resident.getName());
-                    TvAddress.setText(resident.getAddress());
-                    TvCar.setText(resident.getCar_number());
-                    TvPhone.setText(resident.getPhone_number());
-                    TvIn.setText("");
+                if(resident2 != null){
+                    Log.e("yoooo","not null");
+                    TvName.setText(resident2.getName());
+                    TvAddress.setText(resident2.getAddress());
+                    TvCar.setText(resident2.getCar_number());
+                    TvPhone.setText(resident2.getPhone_number());
+
                     String currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-                    TvOut.setText(currentDateAndTime);
-                }else{
-                    Toast.makeText(MainActivity.this,"resident is not null",Toast.LENGTH_SHORT).show();
+
+                    if(resident2.getIn_time().equals("0")){
+                        Toast.makeText(MainActivity.this,"resident coming back",Toast.LENGTH_SHORT).show();
+                        TvOut.setText(resident2.getOut_time());
+                        TvIn.setText(currentDateAndTime);
+                        key=dataSnapshot.getKey();
+                    }else{
+                        Toast.makeText(MainActivity.this,"resident going out",Toast.LENGTH_SHORT).show();
+                        TvOut.setText(currentDateAndTime);
+                        TvIn.setText("0");
+                    }
                 }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
