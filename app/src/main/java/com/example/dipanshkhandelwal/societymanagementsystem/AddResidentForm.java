@@ -23,6 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddResidentForm extends AppCompatActivity {
 
     EditText name, address, phone, car;
@@ -32,6 +35,7 @@ public class AddResidentForm extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
+    private DatabaseReference mFirebaseDatabaseEntries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class AddResidentForm extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("residents");
+        mFirebaseDatabaseEntries = mFirebaseInstance.getReference("entries");
 
         name = (EditText) findViewById(R.id.EtName);
         address = (EditText) findViewById(R.id.EtAddress);
@@ -82,16 +87,31 @@ public class AddResidentForm extends AppCompatActivity {
         });
     }
 
-    private void addResident(String name, String address, String phone, String car) {
+    private void addResident(final String name, String address, String phone, String car) {
         if (TextUtils.isEmpty(userId)) {
             userId = auth.getCurrentUser().getUid();
         }
 
-        Resident resident = new Resident(name, address, phone, car);
+        final Resident resident = new Resident(name, address, phone, car);
         mFirebaseDatabase.child(name).setValue(resident).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(AddResidentForm.this, "Resident Added successfully !!", Toast.LENGTH_SHORT).show();
+                String currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+                resident.setIn_time(currentDateAndTime);
+                resident.setOut_time(currentDateAndTime);
+                mFirebaseDatabaseEntries.child(name).push().setValue(resident).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(AddResidentForm.this, "Resident Added successfully !!", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddResidentForm.this, "There was an error adding !!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 progressBar.setVisibility(View.GONE);
                 startActivity(new Intent(AddResidentForm.this, AddResidentsActivity.class));
             }
